@@ -1,2 +1,2 @@
-
+h
 As a user I am able to input a location to see the weather there
