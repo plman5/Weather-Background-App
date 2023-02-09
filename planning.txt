@@ -1,0 +1,21 @@
+Who's doing what
+Ike
+CJ
+Parker
+Jonathan
+
+Coded in Python, HTML, CSS, and Javascript
+
+File structure (Subject to change)
+/
+|_main.py           # Main file         (Starts the webserver)
+|_const.py          # Constants file    (Contains all the constants)
+|_requirements.txt  # Requirements file (Contains all the requirements)
+|_responses.py      # Responses file    (Contains all the responses)
+|_webserver.py      # Webserver file    (Contains the webserver)
+|_css               # CSS folder        (Contains all the CSS files)
+| |_main.css        # Main CSS file     (Contains all the CSS)
+|_js                # Javascript folder (Contains all the Javascript files)
+| |_jquery.js       # jQuery file       (Contains the jQuery library)
+|_img               # Image folder      (Contains all the images)
+  |_logo.png        # Logo image        (Contains the logo image)
