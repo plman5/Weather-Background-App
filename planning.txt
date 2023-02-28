@@ -1,8 +1,8 @@
 Who's doing what
-Ike
-CJ
-Parker
-Jonathan
+Ike             # Webserver
+CJ              # API Communication
+Parker          # Frontend
+Jonathan        # Image processing
 
 Coded in Python, HTML, CSS, and Javascript
 
