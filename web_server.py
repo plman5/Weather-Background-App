@@ -6,9 +6,16 @@
 import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
+import cgi
 
 hostName = ""
 hostPort = 80
+
+
+#function to call CJ's function to get the weather image
+def requestWeatherImage(city, state):
+    pass
+
 
 class WeatherWebServer(BaseHTTPRequestHandler):
 
@@ -24,6 +31,26 @@ class WeatherWebServer(BaseHTTPRequestHandler):
 
     #	POST is for submitting data.
     def do_POST(self):
+        #Handle post request body
+        form = cgi.FieldStorage(
+            fp=self.rfile,
+            headers=self.headers,
+            environ={'REQUEST_METHOD':'POST',
+                     'CONTENT_TYPE':self.headers['Content-Type'],
+                     })
+        tagList=False
+        a=""
+        #Output all fields
+        for i in form:
+            print(i)
+        #handle different requests
+
+        #Handle get weather request
+        if form['type'].value == "getWeather":
+            #Setup the HTML response template
+            weatherImage=requestWeatherImage(form['city'].value,form['state'].value)
+            return weatherImage
+
         print("incomming http: ", self.path)
         content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
         post_data = self.rfile.read(content_length)  # <--- Gets the data itself
