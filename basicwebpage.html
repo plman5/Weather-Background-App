@@ -7,9 +7,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+    body{
+
+      background-image: url("https://res.cloudinary.com/practicaldev/image/fetch/s--P-zvMTgt--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/qyix6eyhrnc8x9c44yp2.jpg");
+background-repeat: no-repeat;
+      background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    }
     .myLink {display: none}
+    .header{
+      margin: 0 auto;
+      background-color: rgba(255,255,255,0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+        border-radius: 100px;
+      width: 50%;
+      padding: 1em;
+      margin-top: 1em;
+    }
+    .form{
+      text-align: center;
+    }
   </style>
 </head>
+<body>
+<header class="header">
+  <form class="form">
     <h3>Enter the name of a city to check the weather</h3>
       <div class="input">
         <label>City Name</label>
@@ -73,5 +98,8 @@
     <p><button class="weather-button">Show Weather</button></p>
   </form>
 </header>
+<br/>
+<img class="padding" src="" style="min-height:400px;display: block;margin-left: auto;margin-right: auto;width: 50%;"/>
+<br/>
 </body>
 </html>
