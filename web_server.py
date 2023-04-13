@@ -27,7 +27,9 @@ class WeatherWebServer(BaseHTTPRequestHandler):
     #	GET is for clients geting the predi
     def do_GET(self):
         self.send_response(200)
-        self.wfile.write(bytes("<p>You accessed path: %s</p>" % self.path, "utf-8"))
+        with open("basicwebpage.html", "r") as f:
+            webPage=f.read()
+        self.wfile.write(bytes(webPage, "utf-8"))
 
     #	POST is for submitting data.
     def do_POST(self):

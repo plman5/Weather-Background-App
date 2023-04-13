@@ -31,10 +31,21 @@ background-repeat: no-repeat;
       text-align: center;
     }
   </style>
+  <script>
+    function setup(){
+      var form=document.getElementById("weatherInput");
+      var port=location.port;
+      if (port != ""){
+        port=":"+port;
+      }
+        form.action="http://"+location.hostname+port;
+
+    }
+  </script>
 </head>
-<body>
+<body onload="setup()">
 <header class="header">
-  <form class="form">
+  <form method="post" class="form" id="weatherInput">
     <h3>Enter the name of a city to check the weather</h3>
       <div class="input">
         <label>City Name</label>
@@ -95,7 +106,7 @@ background-repeat: no-repeat;
         </select>
       </div>
     </div>
-    <p><button class="weather-button">Show Weather</button></p>
+    <p><input type="submit" class="weather-button" value="Show Weather"></input></p>
   </form>
 </header>
 <br/>
