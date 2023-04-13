@@ -6,11 +6,13 @@ def add_weather_overlay(image_path, weatherCondition):
 
     # Load the weather overlay image based on the weather condition
     if weatherCondition == "Sunny":
-        overlay_image = Image.open("sunny.png").convert("RGBA")
+        overlay_image = Image.open("sun_overlay.png").convert("RGBA")
     elif weatheCondition == "Cloudy":
-        overlay_image = Image.open("cloudy.png").convert("RGBA")
+        overlay_image = Image.open("cloud_overlay.png").convert("RGBA")
     elif weatherCondition == "Rainy":
-        overlay_image = Image.open("rainy.png").convert("RGBA")
+        overlay_image = Image.open("rain_overlay.png").convert("RGBA")
+    elif weatherCondition == "Snowy":
+        overlay_image = Image.open("snow_overlay.png").convert("RGBA")
     else:
         # Default to no overlay if the weather condition is not recognized
         return base_image
