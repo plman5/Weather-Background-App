@@ -12,7 +12,7 @@ hostName = ""
 hostPort = 80
 
 
-#function to call CJ's function to get the weather image
+#function to call Jonathan's function to get the weather image
 def requestWeatherImage(city, state):
     pass
 
