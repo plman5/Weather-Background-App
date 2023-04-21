@@ -31,14 +31,29 @@ def getWeatherInfo(latitude: float, longitude: float) -> str:
     return res['properties']['periods'][0]['shortForecast']
 
 def getPopulationInfo(city: str, state: str)->float:
-    census=urllib.request.urlopen(urllib.request.Request(f'https://api.census.gov/data/2021/acs/acs1?get=NAME,B01001_001E&for=place&in=state:{str(state).zfill(2)}&key={censusKey}'))
+    with open('censusKey.txt') as f:
+        censusKey=f.read()
+    
+    states=urllib.request.urlopen(urllib.request.Request(f'https://api.census.gov/data/2021/acs/acs1?get=NAME&for=state:*&key={censusKey}'))
+    statesBytes=states.read()
+    statesStr=statesBytes.decode('utf8')
+    states.close()
+    statesJson=json.loads(statesStr)
+
+    for stateArr in statesJson:
+        if(stateArr[0] == state):
+            callState = stateArr[1]
+
+    cityName = city + ', ' + state
+
+    census=urllib.request.urlopen(urllib.request.Request(f'https://api.census.gov/data/2021/acs/acs1?get=NAME,B01001_001E&for=place&in=state:{str(callState).zfill(2)}&key={censusKey}'))
     censusBytes=census.read()
     censusStr=censusBytes.decode('utf8')
     census.close()
     censusJson=json.loads(censusStr)
 
     for cityArr in censusJson:
-        if cityArr[0] == city:
+        if cityArr[0] == cityName:
             return cityArr[1]
         
     return 0
