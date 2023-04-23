@@ -37,7 +37,7 @@ def add_weather_overlay(population, weatherCondition):
         return base_image
 
     # Resize the overlay image to match the size of the base image
-    overlay_image = overlay_image.resize(base_image.size)
+    overlay_image = overlay_image.resize(base_image.size/3)
 
     # Combine the base image and overlay image
     result_image = Image.alpha_composite(base_image, overlay_image)
