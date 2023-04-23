@@ -1,6 +1,18 @@
 from PIL import Image
 
-def add_weather_overlay(image_path, weatherCondition):
+def add_weather_overlay(population, weatherCondition):
+    # Set the target size for all images
+    target_width = 500
+    target_height = 500
+
+    # Open and resize each image
+    for filename in ['town.jpg', 'small_city.jpg', 'big_city.jpg', 'biggest_city.jpg']:
+        img = Image.open(filename)
+        img = img.resize((target_width, target_height))
+        new_filename = filename
+        img.save(new_filename)
+        
+    
     # Load the base image
     base_image = Image.open(image_path).convert("RGBA")
 
