@@ -132,3 +132,6 @@ dmypy.json
 
 
 censusKey.txt
+censusDump/
+censusDump copy/
+censusDump copy 2/

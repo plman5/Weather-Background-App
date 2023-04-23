@@ -39,7 +39,74 @@ background-repeat: no-repeat;
         port=":"+port;
       }
         form.action="http://"+location.hostname+port;
-
+changeStateList();
+    }
+    var cityDatabase = {
+"Alaska":['Anchorage municipality'],
+"Alabama":['Auburn city', 'Birmingham city', 'Dothan city', 'Hoover city', 'Huntsville city', 'Mobile city', 'Montgomery city', 'Tuscaloosa city'],
+"Arkansas":['Conway city', 'Fayetteville city', 'Fort Smith city', 'Jonesboro city', 'Little Rock city', 'Rogers city', 'Springdale city'],
+"Arizona":['Avondale city', 'Buckeye city', 'Casas Adobes CDP', 'Chandler city', 'Flagstaff city', 'Gilbert town', 'Glendale city', 'Goodyear city', 'Mesa city', 'Peoria city', 'Phoenix city', 'Queen Creek town', 'San Tan Valley CDP', 'Scottsdale city', 'Surprise city', 'Tempe city', 'Tucson city', 'Yuma city'],
+"California":['Alameda city', 'Alhambra city', 'Anaheim city', 'Antioch city', 'Apple Valley town', 'Arden-Arcade CDP', 'Bakersfield city', 'Baldwin Park city', 'Bellflower city', 'Berkeley city', 'Buena Park city', 'Burbank city', 'Camarillo city', 'Carlsbad city', 'Carmichael CDP', 'Carson city', 'Castro Valley CDP', 'Chico city', 'Chino Hills city', 'Chino city', 'Chula Vista city', 'Citrus Heights city', 'Clovis city', 'Compton city', 'Concord city', 'Corona city', 'Costa Mesa city', 'Daly City city', 'Davis city', 'Downey city', 'Dublin city', 'East Los Angeles CDP', 'Eastvale city', 'El Cajon city', 'El Monte city', 'Elk Grove city', 'Escondido city', 'Fairfield city', 'Folsom city', 'Fontana city', 'Fremont city', 'Fresno city', 'Fullerton city', 'Garden Grove city', 'Glendale city', 'Hawthorne city', 'Hayward city', 'Hemet city', 'Hesperia city', 'Huntington Beach city', 'Indio city', 'Inglewood city', 'Irvine city', 'Jurupa Valley city', 'Lake Elsinore city', 'Lake Forest city', 'Lakewood city', 'Lancaster city', 'Livermore city', 'Lodi city', 'Long Beach city', 'Los Angeles city', 'Lynwood city', 'Madera city', 'Manteca city', 'Menifee city', 'Merced city', 'Milpitas city', 'Mission Viejo city', 'Modesto city', 'Moreno Valley city', 'Mountain View city', 'Murrieta city', 'Napa city', 'Newport Beach city', 'Norwalk city', 'Oakland city', 'Oceanside city', 'Ontario city', 'Orange city', 'Oxnard city', 'Palmdale city', 'Palo Alto city', 'Pasadena city', 'Perris city', 'Pittsburg city', 'Pleasanton city', 'Pomona city', 'Rancho Cordova city', 'Rancho Cucamonga city', 'Redding city', 'Redlands city', 'Redondo Beach city', 'Redwood City city', 'Rialto city', 'Richmond city', 'Riverside city', 'Rocklin city', 'Roseville city', 'Sacramento city', 'Salinas city', 'San Bernardino city', 'San Buenaventura (Ventura) city', 'San Diego city', 'San Francisco city', 'San Jose city', 'San Leandro city', 'San Marcos city', 'San Mateo city', 'San Ramon city', 'Santa Ana city', 'Santa Barbara city', 'Santa Clara city', 'Santa Clarita city', 'Santa Maria city', 'Santa Monica city', 'Santa Rosa city', 'Simi Valley city', 'South Gate city', 'Stockton city', 'Sunnyvale city', 'Temecula city', 'Thousand Oaks city', 'Torrance city', 'Tracy city', 'Tulare city', 'Turlock city', 'Tustin city', 'Union City city', 'Upland city', 'Vacaville city', 'Vallejo city', 'Victorville city', 'Visalia city', 'Vista city', 'Walnut Creek city', 'West Covina city', 'Westminster city', 'Whittier city', 'Yorba Linda city', 'Yuba City city'],
+"Connecticut":['Bridgeport city', 'Danbury city', 'Hartford city', 'New Britain city', 'New Haven city', 'Norwalk city', 'Stamford city', 'Waterbury city'],
+"Colorado":['Arvada city', 'Aurora city', 'Boulder city', 'Broomfield city', 'Castle Rock town', 'Centennial city', 'Colorado Springs city', 'Denver city', 'Fort Collins city', 'Grand Junction city', 'Greeley city', 'Highlands Ranch CDP', 'Lakewood city', 'Longmont city', 'Loveland city', 'Pueblo city', 'Thornton city', 'Westminster city'],
+"District of Columbia":['Washington city'],
+"Delaware":['Wilmington city'],
+"Florida":['Alafaya CDP', 'Boca Raton city', 'Boynton Beach city', 'Brandon CDP', 'Cape Coral city', 'Clearwater city', 'Coral Springs city', 'Davie town', 'Daytona Beach city', 'Deerfield Beach city', 'Delray Beach city', 'Deltona city', 'Doral city', 'Fort Lauderdale city', 'Fort Myers city', 'Gainesville city', 'Hialeah city', 'Hollywood city', 'Homestead city', 'Horizon West CDP', 'Jacksonville city', 'Kendall CDP', 'Kissimmee city', 'Lakeland city', 'Largo city', 'Lauderhill city', 'Lehigh Acres CDP', 'Melbourne city', 'Miami Beach city', 'Miami Gardens city', 'Miami city', 'Miramar city', 'North Port city', 'Orlando city', 'Palm Bay city', 'Palm Coast city', 'Pembroke Pines city', 'Pine Hills CDP', 'Plantation city', 'Poinciana CDP', 'Pompano Beach city', 'Port Charlotte CDP', 'Port St. Lucie city', 'Riverview CDP', 'Spring Hill CDP', 'St. Petersburg city', 'Sunrise city', 'Tallahassee city', 'Tamarac city', 'Tampa city', 'The Villages CDP', "Town 'n' Country CDP", 'Wesley Chapel CDP', 'West Palm Beach city', 'Weston city'],
+"Georgia":['Albany city', 'Alpharetta city', 'Athens-Clarke County unified government (balance)', 'Atlanta city', 'Augusta-Richmond County consolidated government (balance)', 'Columbus city', 'Johns Creek city', 'Macon-Bibb County', 'Roswell city', 'Sandy Springs city', 'Savannah city', 'South Fulton city', 'Warner Robins city'],
+"Hawaii":['Urban Honolulu CDP'],
+"Iowa":['Ames city', 'Ankeny city', 'Cedar Rapids city', 'Davenport city', 'Des Moines city', 'Iowa City city', 'Sioux City city', 'Waterloo city', 'West Des Moines city'],
+"Idaho":['Boise City city', 'Idaho Falls city', 'Meridian city', 'Nampa city'],
+"Illinois":['Arlington Heights village', 'Aurora city', 'Bloomington city', 'Bolingbrook village', 'Champaign city', 'Chicago city', 'Cicero town', 'Decatur city', 'Elgin city', 'Evanston city', 'Joliet city', 'Naperville city', 'Palatine village', 'Peoria city', 'Rockford city', 'Schaumburg village', 'Skokie village', 'Springfield city', 'Waukegan city'],
+"Indiana":['Bloomington city', 'Carmel city', 'Evansville city', 'Fishers city', 'Fort Wayne city', 'Hammond city', 'Indianapolis city (balance)', 'Lafayette city', 'Noblesville city', 'South Bend city'],
+"Kansas":['Kansas City city', 'Lawrence city', 'Olathe city', 'Overland Park city', 'Shawnee city', 'Topeka city', 'Wichita city'],
+"Kentucky":['Bowling Green city', 'Lexington-Fayette urban county', 'Louisville/Jefferson County metro government (balance)'],
+"Louisiana":['Baton Rouge city', 'Kenner city', 'Lafayette city', 'Lake Charles city', 'Metairie CDP', 'New Orleans city', 'Shreveport city'],
+"Massachusetts":['Boston city', 'Brockton city', 'Cambridge city', 'Fall River city', 'Framingham city', 'Haverhill city', 'Lawrence city', 'Lowell city', 'Lynn city', 'Malden city', 'New Bedford city', 'Newton city', 'Quincy city', 'Somerville city', 'Springfield city', 'Worcester city'],
+"Maryland":['Baltimore city', 'Bethesda CDP', 'Columbia CDP', 'Ellicott City CDP', 'Frederick city', 'Gaithersburg city', 'Germantown CDP', 'Glen Burnie CDP', 'Rockville city', 'Silver Spring CDP', 'Waldorf CDP'],
+"Maine":['Portland city'],
+"Michigan":['Ann Arbor city', 'Dearborn city', 'Detroit city', 'Farmington Hills city', 'Flint city', 'Grand Rapids city', 'Kalamazoo city', 'Lansing city', 'Livonia city', 'Novi city', 'Rochester Hills city', 'Southfield city', 'Sterling Heights city', 'Troy city', 'Warren city', 'Westland city', 'Wyoming city'],
+"Minnesota":['Blaine city', 'Bloomington city', 'Brooklyn Park city', 'Duluth city', 'Eagan city', 'Lakeville city', 'Maple Grove city', 'Minneapolis city', 'Plymouth city', 'Rochester city', 'St. Cloud city', 'St. Paul city', 'Woodbury city'],
+"Missouri":['Columbia city', 'Independence city', 'Kansas City city', "Lee's Summit city", "O'Fallon city", 'Springfield city', 'St. Charles city', 'St. Joseph city', 'St. Louis city'],
+"Mississippi":['Gulfport city', 'Jackson city'],
+"Montana":['Billings city', 'Missoula city'],
+"North Carolina":['Asheville city', 'Cary town', 'Charlotte city', 'Concord city', 'Durham city', 'Fayetteville city', 'Gastonia city', 'Greensboro city', 'Greenville city', 'High Point city', 'Jacksonville city', 'Raleigh city', 'Wilmington city', 'Winston-Salem city'],
+"North Dakota":['Bismarck city', 'Fargo city'],
+"Nebraska":['Lincoln city', 'Omaha city'],
+"New Hampshire":['Manchester city', 'Nashua city'],
+"New Jersey":['Bayonne city', 'Camden city', 'Clifton city', 'East Orange city', 'Elizabeth city', 'Jersey City city', 'Lakewood CDP', 'Newark city', 'Passaic city', 'Paterson city', 'Toms River CDP', 'Trenton city', 'Union City city'],
+"New Mexico":['Albuquerque city', 'Las Cruces city', 'Rio Rancho city', 'Santa Fe city'],
+"Nevada":['Enterprise CDP', 'Henderson city', 'Las Vegas city', 'North Las Vegas city', 'Paradise CDP', 'Reno city', 'Sparks city', 'Spring Valley CDP', 'Sunrise Manor CDP'],
+"New York":['Albany city', 'Buffalo city', 'Cheektowaga CDP', 'Mount Vernon city', 'New Rochelle city', 'New York city', 'Rochester city', 'Schenectady city', 'Syracuse city', 'Yonkers city'],
+"Ohio":['Akron city', 'Canton city', 'Cincinnati city', 'Cleveland city', 'Columbus city', 'Dayton city', 'Lorain city', 'Parma city', 'Toledo city'],
+"Oklahoma":['Broken Arrow city', 'Edmond city', 'Lawton city', 'Norman city', 'Oklahoma City city', 'Tulsa city'],
+"Oregon":['Beaverton city', 'Bend city', 'Eugene city', 'Gresham city', 'Hillsboro city', 'Medford city', 'Portland city', 'Salem city'],
+"Pennsylvania":['Allentown city', 'Bethlehem city', 'Erie city', 'Philadelphia city', 'Pittsburgh city', 'Reading city', 'Scranton city'],
+"Puerto Rico":['Bayamón zona urbana', 'Caguas zona urbana', 'Carolina zona urbana', 'Guaynabo zona urbana', 'Ponce zona urbana', 'San Juan zona urbana'],
+"Rhode Island":['Cranston city', 'Pawtucket city', 'Providence city', 'Warwick city'],
+"South Carolina":['Charleston city', 'Columbia city', 'Greenville city', 'Mount Pleasant town', 'North Charleston city', 'Rock Hill city'],
+"South Dakota":['Rapid City city', 'Sioux Falls city'],
+"Tennessee":['Chattanooga city', 'Clarksville city', 'Franklin city', 'Jackson city', 'Johnson City city', 'Knoxville city', 'Memphis city', 'Murfreesboro city', 'Nashville-Davidson metropolitan government (balance)'],
+"Texas":['Abilene city', 'Allen city', 'Amarillo city', 'Arlington city', 'Atascocita CDP', 'Austin city', 'Baytown city', 'Beaumont city', 'Brownsville city', 'Bryan city', 'Carrollton city', 'Cedar Park city', 'College Station city', 'Conroe city', 'Corpus Christi city', 'Dallas city', 'Denton city', 'Edinburg city', 'El Paso city', 'Flower Mound town', 'Fort Worth city', 'Frisco city', 'Garland city', 'Georgetown city', 'Grand Prairie city', 'Harlingen city', 'Houston city', 'Irving city', 'Killeen city', 'Laredo city', 'League City city', 'Leander city', 'Lewisville city', 'Longview city', 'Lubbock city', 'Mansfield city', 'McAllen city', 'McKinney city', 'Mesquite city', 'Midland city', 'Mission city', 'Missouri City city', 'New Braunfels city', 'North Richland Hills city', 'Odessa city', 'Pasadena city', 'Pearland city', 'Pflugerville city', 'Pharr city', 'Plano city', 'Richardson city', 'Round Rock city', 'San Angelo city', 'San Antonio city', 'San Marcos city', 'Spring CDP', 'Sugar Land city', 'Temple city', 'The Woodlands CDP', 'Tyler city', 'Victoria city', 'Waco city', 'Wichita Falls city'],
+"Utah":['Layton city', 'Lehi city', 'Ogden city', 'Orem city', 'Provo city', 'Salt Lake City city', 'Sandy city', 'South Jordan city', 'St. George city', 'West Jordan city', 'West Valley City city'],
+"Virginia":['Alexandria city', 'Arlington CDP', 'Centreville CDP', 'Chesapeake city', 'Dale City CDP', 'Hampton city', 'Lynchburg city', 'Newport News city', 'Norfolk city', 'Portsmouth city', 'Richmond city', 'Roanoke city', 'Suffolk city', 'Virginia Beach city'],
+"Washington":['Auburn city', 'Bellevue city', 'Bellingham city', 'Everett city', 'Federal Way city', 'Kennewick city', 'Kent city', 'Kirkland city', 'Marysville city', 'Pasco city', 'Redmond city', 'Renton city', 'Sammamish city', 'Seattle city', 'South Hill CDP', 'Spokane Valley city', 'Spokane city', 'Tacoma city', 'Vancouver city', 'Yakima city'],
+"Wisconsin":['Appleton city', 'Eau Claire city', 'Green Bay city', 'Janesville city', 'Kenosha city', 'Madison city', 'Milwaukee city', 'Oshkosh city', 'Racine city', 'Waukesha city'],
+"Wyoming":['Cheyenne city']
+}
+    function changeStateList(){
+		var stateList = document.getElementById("state");
+		var cityList = document.getElementById("city");
+		while (cityList.options.length) {
+			cityList.remove(0);
+		}
+		var cities = cityDatabase[stateList.value];
+		if (cities) {
+		    var i;
+		    for (i = 0; i < cities.length; i++) {
+		        var city = new Option(cities[i], i);
+		        cityList.options.add(city);
+		    }
+		}
     }
   </script>
 </head>
@@ -48,61 +115,63 @@ background-repeat: no-repeat;
   <form method="post" class="form" id="weatherInput">
     <h3>Enter the name of a city to check the weather</h3>
       <div class="input">
-        <label>City Name</label>
-        <input class="city-input" type="text" placeholder="City Name">
         <label for="state">State</label>
-        <select name="state" id="state" size="1">
-          <option value="AL">Alabama</option>
-          <option value="AK">Alaska</option>
-          <option value="AZ">Arizona</option>
-          <option value="AR">Arkansas</option>
-          <option value="CA">California</option>
-          <option value="CO">Colorado</option>
-          <option value="CT">Connecticut</option>
-          <option value="DE">Delaware</option>
-          <option value="FL">Florida</option>
-          <option value="GA">Georgia</option>
-          <option value="HI">Hawaii</option>
-          <option value="ID">Idaho</option>
-          <option value="IL">Illinois</option>
-          <option value="IN">Indiana</option>
-          <option value="IA">Iowa</option>
-          <option value="KS">Kansas</option>
-          <option value="KY">Kentucky</option>
-          <option value="LA">Louisiana</option>
-          <option value="ME">Maine</option>
-          <option value="MD">Maryland</option>
-          <option value="MA">Massachusetts</option>
-          <option value="MI">Michigan</option>
-          <option value="MN">Minnesota</option>
-          <option value="MS">Mississippi</option>
-          <option value="MO">Missouri</option>
-          <option value="MT">Montana</option>
-          <option value="NE">Nebraska</option>
-          <option value="NV">Nevada</option>
-          <option value="NH">New Hampshire</option>
-          <option value="NJ">New Jersey</option>
-          <option value="NM">New Mexico</option>
-          <option value="NY">New York</option>
-          <option value="NC">North Carolina</option>
-          <option value="ND">North Dakota</option>
-          <option value="OH">Ohio</option>
-          <option value="OK">Oklahoma</option>
-          <option value="OR">Oregon</option>
-          <option value="PA">Pennsylvania</option>
-          <option value="RI">Rhode Island</option>
-          <option value="SC">South Carolina</option>
-          <option value="SD">South Dakota</option>
-          <option value="TN">Tennessee</option>
-          <option value="TX">Texas</option>
-          <option value="UT">Utah</option>
-          <option value="VT">Vermont</option>
-          <option value="VA">Virginia</option>
-          <option value="WA">Washington</option>
-          <option value="DC">Washington DC</option>
-          <option value="WV">West Virginia</option>
-          <option value="WI">Wisconsin</option>
-          <option value="WY">Wyoming</option>
+        <select name="state" id="state" size="1" onchange="changeStateList()">
+          <option value="Alabama">Alabama</option>
+          <option value="Alaska">Alaska</option>
+          <option value="Arizona">Arizona</option>
+          <option value="Arkansas">Arkansas</option>
+          <option value="California">California</option>
+          <option value="Colorado">Colorado</option>
+          <option value="Connecticut">Connecticut</option>
+          <option value="Delaware">Delaware</option>
+          <option value="Florida">Florida</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Hawaii">Hawaii</option>
+          <option value="Idaho">Idaho</option>
+          <option value="Illinois">Illinois</option>
+          <option value="Indiana">Indiana</option>
+          <option value="Iowa">Iowa</option>
+          <option value="Kansas">Kansas</option>
+          <option value="Kentucky">Kentucky</option>
+          <option value="Louisiana">Louisiana</option>
+          <option value="Maine">Maine</option>
+          <option value="Maryland">Maryland</option>
+          <option value="Massachusetts">Massachusetts</option>
+          <option value="Michigan">Michigan</option>
+          <option value="Minnesota">Minnesota</option>
+          <option value="Mississippi">Mississippi</option>
+          <option value="Missouri">Missouri</option>
+          <option value="Montana">Montana</option>
+          <option value="Nebraska">Nebraska</option>
+          <option value="Nevada">Nevada</option>
+          <option value="New Hampshire">New Hampshire</option>
+          <option value="New Jersey">New Jersey</option>
+          <option value="New Mexico">New Mexico</option>
+          <option value="New York">New York</option>
+          <option value="North Carolina">North Carolina</option>
+          <option value="North Dakota">North Dakota</option>
+          <option value="Ohio">Ohio</option>
+          <option value="Oklahoma">Oklahoma</option>
+          <option value="Oregon">Oregon</option>
+          <option value="Pennsylvania">Pennsylvania</option>
+          <option value="Rhode Island">Rhode Island</option>
+          <option value="South Carolina">South Carolina</option>
+          <option value="South Dakota">South Dakota</option>
+          <option value="Tennessee">Tennessee</option>
+          <option value="Texas">Texas</option>
+          <option value="Utah">Utah</option>
+<!--          <option value="Vermont">Vermont</option>-->
+          <option value="Virginia">Virginia</option>
+          <option value="Washington">Washington</option>
+          <option value="Washington DC">Washington DC</option>
+<!--          <option value="West Virginia">West Virginia</option>-->
+          <option value="Wisconsin">Wisconsin</option>
+          <option value="Wyoming">Wyoming</option>
+        </select>
+        <label for="city">City</label>
+        <select id="city" name="city">
+          <option value="none">Null</option>
         </select>
       </div>
     </div>
