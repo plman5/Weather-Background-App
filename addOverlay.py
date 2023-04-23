@@ -11,7 +11,16 @@ def add_weather_overlay(population, weatherCondition):
         img = img.resize((target_width, target_height))
         new_filename = filename
         img.save(new_filename)
-        
+ 
+    # Load the weather overlay image based on the weather condition
+    if population <= 60000:
+        base_image = Image.open("town.jpg").convert("RGBA")
+    elif population <= 200000:
+        base_image = Image.open("small_city.jpg").convert("RGBA")
+    elif population <= 1000000:
+        base_image = Image.open("big_city.jpg").convert("RGBA")
+    elif population > 1000000:
+        base_image = Image.open("biggest_city.jpg").convert("RGBA")
     
     # Load the base image
     base_image = Image.open(image_path).convert("RGBA")
@@ -19,7 +28,7 @@ def add_weather_overlay(population, weatherCondition):
     # Load the weather overlay image based on the weather condition
     if weatherCondition == "Sunny":
         overlay_image = Image.open("sun_overlay.png").convert("RGBA")
-    elif weatheCondition == "Cloudy":
+    elif weatherCondition == "Cloudy":
         overlay_image = Image.open("cloud_overlay.png").convert("RGBA")
     elif weatherCondition == "Rainy":
         overlay_image = Image.open("rain_overlay.png").convert("RGBA")
