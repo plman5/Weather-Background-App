@@ -7,14 +7,15 @@ import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import cgi
+from apiCalls import getCityWeatherImage
 
 hostName = ""
 hostPort = 80
 
 
-#function to call Jonathan's function to get the weather image
+#function to call CJ's function to get the weather image
 def requestWeatherImage(city, state):
-    pass
+    return getCityWeatherImage(city,state)
 
 
 class WeatherWebServer(BaseHTTPRequestHandler):
@@ -51,13 +52,22 @@ class WeatherWebServer(BaseHTTPRequestHandler):
         if form['type'].value == "getWeather":
             #Setup the HTML response template
             weatherImage=requestWeatherImage(form['city'].value,form['state'].value)
-            return weatherImage
+            #return weatherImage
+            self.respond(bytes(f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="2;url=.?state={form["state"].value}&city={form["city"].value}&image={weatherImage}"></head><body></body></html>', "utf-8"))
 
         print("incomming http: ", self.path)
         content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
         post_data = self.rfile.read(content_length)  # <--- Gets the data itself
         self.send_response(200)
         print(self.rfile.read())
+
+    #Tbh, idk what this is, but I see it in other servers set up like this, so whatever.
+    def respond(self, response, status=200):
+        self.send_response(status)
+        self.send_header("Content-type", "text/html")
+        self.send_header("Content-length", len(response))
+        self.end_headers()
+        self.wfile.write(response)
 
 
 #Start running the server
