@@ -32,14 +32,15 @@ background-repeat: no-repeat;
     }
   </style>
   <script>
-    function setup(){
-      var form=document.getElementById("weatherInput");
-      var port=location.port;
-      if (port != ""){
-        port=":"+port;
-      }
-        form.action="http://"+location.hostname+port;
-changeStateList();
+    function GetURLParameter(sParam) {
+        let sPageURL = window.location.search.substring(1);
+        let sURLVariables = sPageURL.split('&');
+        for (let i = 0; i < sURLVariables.length; i++) {
+            let sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1];
+            }
+        }
     }
     var cityDatabase = {
 "Alaska":['Anchorage municipality'],
@@ -103,10 +104,53 @@ changeStateList();
 		if (cities) {
 		    var i;
 		    for (i = 0; i < cities.length; i++) {
-		        var city = new Option(cities[i], i);
+		        var city = new Option(cities[i], cities[i]);
 		        cityList.options.add(city);
 		    }
 		}
+    }
+
+
+    function setup(){
+      var form=document.getElementById("weatherInput");
+      var port=location.port;
+      if (port != ""){
+        port=":"+port;
+      }
+        form.action="http://"+location.hostname+port;
+
+        changeStateList();
+      // get parameters fromurl
+        var cityParam=GetURLParameter("city");
+        var state=GetURLParameter("state");
+        var image=GetURLParameter("image");
+        // set form values
+        if (state != null){
+          document.getElementById("state").value=state;
+
+		var stateList = document.getElementById("state");
+		var cityList = document.getElementById("city");
+		while (cityList.options.length) {
+			cityList.remove(0);
+		}
+		var cities = cityDatabase[stateList.value];
+		if (cities) {
+		    var i;
+		    for (i = 0; i < cities.length; i++) {
+		        var city = new Option(cities[i], cities[i]);
+		        cityList.options.add(city);
+		    }
+		}
+        }
+        console.log(cityParam);
+        cityParam=cityParam.replaceAll("%20", " ")
+        if (city != null){
+          document.getElementById("city").value=cityParam;
+        }
+        //if there's an image, update the background, it will be a b64 encoded image
+        if (image != null){
+          document.body.style.backgroundImage="url('"+image+"')";
+        }
     }
   </script>
 </head>
@@ -179,7 +223,8 @@ changeStateList();
   </form>
 </header>
 <br/>
-<img class="padding" src="" style="min-height:400px;display: block;margin-left: auto;margin-right: auto;width: 50%;"/>
+<!--<img class="padding" src="" style="min-height:400px;display: block;margin-left: auto;margin-right: auto;width: 50%;"/>-->
 <br/>
+<textarea style="display:none; visibility:hidden"></textarea>
 </body>
 </html>
