@@ -34,6 +34,12 @@ def add_weather_overlay(population, weatherCondition):
         overlay_image = Image.open("rain_overlay.png").convert("RGBA")
     elif "snow" in weatherCondition:
         overlay_image = Image.open("snow_overlay.png").convert("RGBA")
+    elif "wind" in weatherCondition:
+        overlay_image = Image.open("wind_overlay.png").convert("RGBA")
+    elif "overcast" in weatherCondition:
+        overlay_image = Image.open("overcast_overlay.png").convert("RGBA")
+    elif "storm" in weatherCondition:
+        overlay_image = Image.open("storm_overlay.png").convert("RGBA")
     else:
         # Default to no overlay if the weather condition is not recognized
         return base_image
