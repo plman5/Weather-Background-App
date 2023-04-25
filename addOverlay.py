@@ -22,16 +22,24 @@ def add_weather_overlay(population, weatherCondition):
     elif population > 1000000:
         base_image = Image.open("biggest_city.jpg").convert("RGBA")
     
+    #Convert the weather condition to lowercase
+    weatherCondition = weatherCondition.lower();
 
     # Load the weather overlay image based on the weather condition
-    if weatherCondition == "Sunny":
+    if "sun" in weatherCondition:
         overlay_image = Image.open("sun_overlay.png").convert("RGBA")
-    elif weatherCondition == "Cloudy":
+    elif "cloud" in weatherCondition:
         overlay_image = Image.open("cloud_overlay.png").convert("RGBA")
-    elif weatherCondition == "Rainy":
+    elif "rain" in weatherCondition:
         overlay_image = Image.open("rain_overlay.png").convert("RGBA")
-    elif weatherCondition == "Snowy":
+    elif "snow" in weatherCondition:
         overlay_image = Image.open("snow_overlay.png").convert("RGBA")
+    elif "wind" in weatherCondition:
+        overlay_image = Image.open("wind_overlay.png").convert("RGBA")
+    elif "overcast" in weatherCondition:
+        overlay_image = Image.open("overcast_overlay.png").convert("RGBA")
+    elif "storm" in weatherCondition:
+        overlay_image = Image.open("storm_overlay.png").convert("RGBA")
     else:
         # Default to no overlay if the weather condition is not recognized
         return base_image
