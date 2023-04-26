@@ -14,32 +14,32 @@ def add_weather_overlay(population, weatherCondition):
  
     # Load the city jpg image based on the population of the city
     if population <= 60000:
-        base_image = Image.open("town.jpg").convert("RGBA")
+        base_image = Image.open("img/town.jpg").convert("RGBA")
     elif population <= 200000:
-        base_image = Image.open("small_city.jpg").convert("RGBA")
+        base_image = Image.open("img/small_city.jpg").convert("RGBA")
     elif population <= 1000000:
-        base_image = Image.open("big_city.jpg").convert("RGBA")
+        base_image = Image.open("img/big_city.jpg").convert("RGBA")
     elif population > 1000000:
-        base_image = Image.open("biggest_city.jpg").convert("RGBA")
+        base_image = Image.open("img/biggest_city.jpg").convert("RGBA")
     
     #Convert the weather condition to lowercase
     weatherCondition = weatherCondition.lower();
 
     # Load the weather overlay image based on the weather condition
     if "sun" in weatherCondition:
-        overlay_image = Image.open("sun_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/sun_overlay.png").convert("RGBA")
     elif "cloud" in weatherCondition:
-        overlay_image = Image.open("cloud_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/cloud_overlay.png").convert("RGBA")
     elif "rain" in weatherCondition:
-        overlay_image = Image.open("rain_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/rain_overlay.png").convert("RGBA")
     elif "snow" in weatherCondition:
-        overlay_image = Image.open("snow_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/snow_overlay.png").convert("RGBA")
     elif "wind" in weatherCondition:
-        overlay_image = Image.open("wind_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/wind_overlay.png").convert("RGBA")
     elif "overcast" in weatherCondition:
-        overlay_image = Image.open("overcast_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/overcast_overlay.png").convert("RGBA")
     elif "storm" in weatherCondition:
-        overlay_image = Image.open("storm_overlay.png").convert("RGBA")
+        overlay_image = Image.open("img/storm_overlay.png").convert("RGBA")
     else:
         # Default to no overlay if the weather condition is not recognized
         return base_image
@@ -50,5 +50,10 @@ def add_weather_overlay(population, weatherCondition):
     # Combine the base image and overlay image
     result_image = Image.alpha_composite(base_image, overlay_image)
 
-    # Return the modified image
-    return result_image
+    # Convert the image to a base64 string
+    img_buffer = io.BytesIO()
+    result_image.save(img_buffer, format='PNG')
+    img_str = base64.b64encode(img_buffer.getvalue()).decode()
+
+    # Return the modified image as a base64 string
+    return img_str
