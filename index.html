@@ -91,6 +91,7 @@ background-repeat: no-repeat;
 "Utah":['Layton city', 'Lehi city', 'Ogden city', 'Orem city', 'Provo city', 'Salt Lake City city', 'Sandy city', 'South Jordan city', 'St. George city', 'West Jordan city', 'West Valley City city'],
 "Virginia":['Alexandria city', 'Arlington CDP', 'Centreville CDP', 'Chesapeake city', 'Dale City CDP', 'Hampton city', 'Lynchburg city', 'Newport News city', 'Norfolk city', 'Portsmouth city', 'Richmond city', 'Roanoke city', 'Suffolk city', 'Virginia Beach city'],
 "Washington":['Auburn city', 'Bellevue city', 'Bellingham city', 'Everett city', 'Federal Way city', 'Kennewick city', 'Kent city', 'Kirkland city', 'Marysville city', 'Pasco city', 'Redmond city', 'Renton city', 'Sammamish city', 'Seattle city', 'South Hill CDP', 'Spokane Valley city', 'Spokane city', 'Tacoma city', 'Vancouver city', 'Yakima city'],
+"Washington DC":['Washington city'],
 "Wisconsin":['Appleton city', 'Eau Claire city', 'Green Bay city', 'Janesville city', 'Kenosha city', 'Madison city', 'Milwaukee city', 'Oshkosh city', 'Racine city', 'Waukesha city'],
 "Wyoming":['Cheyenne city']
 }
@@ -126,7 +127,7 @@ background-repeat: no-repeat;
         var image=GetURLParameter("image");
         // set form values
         if (state != null){
-          document.getElementById("state").value=state;
+          document.getElementById("state").value=state.replaceAll("%20", " ");
 
 		var stateList = document.getElementById("state");
 		var cityList = document.getElementById("city");
@@ -143,13 +144,13 @@ background-repeat: no-repeat;
 		}
         }
         console.log(cityParam);
-        cityParam=cityParam.replaceAll("%20", " ")
-        if (city != null){
-          document.getElementById("city").value=cityParam;
-        }
         //if there's an image, update the background, it will be a b64 encoded image
-        if (image != null){
-          document.body.style.backgroundImage="url('"+image+"')";
+        if (cityParam != null && state!=null){
+          document.body.style.backgroundImage="url('./img/results/"+cityParam+"-"+state+".png')";
+        }
+        cityParam=cityParam.replaceAll("%20", " ")
+        if (cityParam != null){
+          document.getElementById("city").value=cityParam;
         }
     }
   </script>
@@ -163,7 +164,7 @@ background-repeat: no-repeat;
         <label for="state">State</label>
         <select name="state" id="state" size="1" onchange="changeStateList()">
           <option value="Alabama">Alabama</option>
-          <option value="Alaska">Alaska</option>
+<!--          <option value="Alaska">Alaska</option>-->
           <option value="Arizona">Arizona</option>
           <option value="Arkansas">Arkansas</option>
           <option value="California">California</option>
@@ -209,7 +210,7 @@ background-repeat: no-repeat;
 <!--          <option value="Vermont">Vermont</option>-->
           <option value="Virginia">Virginia</option>
           <option value="Washington">Washington</option>
-          <option value="Washington DC">Washington DC</option>
+          <option value="District of Columbia">Washington DC</option>
 <!--          <option value="West Virginia">West Virginia</option>-->
           <option value="Wisconsin">Wisconsin</option>
           <option value="Wyoming">Wyoming</option>

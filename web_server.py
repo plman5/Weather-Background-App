@@ -1,8 +1,7 @@
 #   This file is responsible for the web server.
 #   It will be used to send data to the web server.
 #   It will also be used to receive data from the web server.
-
-
+import base64
 import socket
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
@@ -27,10 +26,16 @@ class WeatherWebServer(BaseHTTPRequestHandler):
 
     #	GET is for clients geting the predi
     def do_GET(self):
+        print(self.path)
         self.send_response(200)
-        with open("basicwebpage.html", "r") as f:
-            webPage=f.read()
-        self.wfile.write(bytes(webPage, "utf-8"))
+        try:
+            with open("."+self.path.replace("%20"," "), "rb") as f:
+                webPage=f.read()
+            self.wfile.write(webPage)
+        except:
+            with open("index.html", "r") as f:
+                webPage=f.read()
+            self.wfile.write(bytes(webPage, "utf-8"))
 
     #	POST is for submitting data.
     def do_POST(self):
@@ -53,7 +58,7 @@ class WeatherWebServer(BaseHTTPRequestHandler):
             #Setup the HTML response template
             weatherImage=requestWeatherImage(form['city'].value,form['state'].value)
             #return weatherImage
-            self.respond(bytes(f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="2;url=.?state={form["state"].value}&city={form["city"].value}&image=data:image/png;base64,{weatherImage}"></head><body></body></html>', "utf-8"))
+            self.respond(bytes(f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="2;url=.?state={form["state"].value}&city={form["city"].value}"></head><body></body></html>', "utf-8"))
 
         print("incomming http: ", self.path)
         content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
