@@ -1,9 +1,11 @@
 from PIL import Image
+import io
+import base64
 
 def add_weather_overlay(population, weatherCondition):
     # Set the target size for all images
-    target_width = 500
-    target_height = 500
+    target_width = 100
+    target_height = 200
 
     # Open and resize each image
     for filename in ['img/town.jpg', 'img/small_city.jpg', 'img/big_city.jpg', 'img/biggest_city.jpg']:
@@ -45,6 +47,7 @@ def add_weather_overlay(population, weatherCondition):
         return base_image
 
     # Resize the overlay image to match the size of the base image
+    size=overlay_image.size
     # Determine the scale factor based on the target size and the original size
     scale_factor = min(target_width/size[0], target_height/size[1])
 
@@ -52,7 +55,7 @@ def add_weather_overlay(population, weatherCondition):
     new_size = (int(size[0]*scale_factor), int(size[1]*scale_factor))
 
     # Resize the image
-    resized_img = img.resize(new_size)
+    overlay_image = overlay_image.resize(new_size)
 
     # Combine the base image and overlay image
     result_image = Image.alpha_composite(base_image, overlay_image)
