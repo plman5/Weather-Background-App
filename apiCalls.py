@@ -25,7 +25,7 @@ def getWeatherInfo(latitude: float, longitude: float) -> str:
 
     response = requests.get(URL)
     res = response.json()
-    forecastURL = res['properties']['forecast']
+    forecastURL = res['properties']['forecastHourly']
 
     response = requests.get(forecastURL)
     res = response.json()
