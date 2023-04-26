@@ -62,7 +62,7 @@ def getPopulationInfo(city: str, state: str)->float:
 def getCityWeatherImage(city: str, state: str):
     coords = getCityCoords(city, state)
     weather = getWeatherInfo(coords[0], coords[1])
-    pop = getPopulationInfo(city, state)
+    pop = int(getPopulationInfo(city, state))
 
     img = add_weather_overlay(pop, weather)
     return img
