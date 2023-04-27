@@ -130,8 +130,12 @@ dmypy.json
 .pyre/
 
 
-
+#API Keys
 censusKey.txt
+positionstackKey.txt
+
+
+# Unneccesary data files
 censusDump/
 censusDump copy/
 censusDump copy 2/

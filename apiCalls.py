@@ -5,10 +5,12 @@ import urllib.request
 from addOverlay import add_weather_overlay
 
 def getCityCoords(city: str, state: str) -> list:
+    with open('positionstackKey.txt') as f:
+        positionstackKey=f.read()
     conn = http.client.HTTPConnection('api.positionstack.com')
 
     params = urllib.parse.urlencode({
-        'access_key': 'dbbedb2b43064fb0121ab645a874dbc4',
+        'access_key': positionstackKey,
         'query': city,
         'region': state,
         'limit': 1,
