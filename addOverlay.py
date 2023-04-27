@@ -15,13 +15,14 @@ def add_weather_overlay(population, weatherCondition, city, state):
     #    img.save(new_filename)
  
     # Load the city jpg image based on the population of the city
-    if population <= 60000:
+    # Boundaries were determined by creating a histogram of the population data, and basing it off of the quartile ranges
+    if population <= 79942:
         base_image = Image.open("img/town.jpg").convert("RGBA")
-    elif population <= 200000:
+    elif population <= 105419:
         base_image = Image.open("img/small_city.jpg").convert("RGBA")
-    elif population <= 1000000:
+    elif population <= 171472:
         base_image = Image.open("img/big_city.jpg").convert("RGBA")
-    elif population > 1000000:
+    else:
         base_image = Image.open("img/biggest_city.jpg").convert("RGBA")
     
     #Convert the weather condition to lowercase

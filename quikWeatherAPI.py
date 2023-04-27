@@ -76,8 +76,10 @@ for root, dirs, files in os.walk("censusDump"):
                         data[i][1]=data[i][1].split(',')
                         tmp.append(data[i][1][0])
                         state=data[i][1][1]
+                        print(data[i])
+                        bigList.append(data[i][3])
                 print(f'"{state}":{str(sorted(tmp))},')
 #bigList))
 
-
+print('\n'.join(bigList))
 print('done')

@@ -56,9 +56,9 @@ class WeatherWebServer(BaseHTTPRequestHandler):
         #Handle get weather request
         if form['type'].value == "getWeather":
             #Setup the HTML response template
-            weatherImage=requestWeatherImage(form['city'].value,form['state'].value)
+            weatherImage,memo=requestWeatherImage(form['city'].value,form['state'].value)
             #return weatherImage
-            self.respond(bytes(f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="2;url=.?state={form["state"].value}&city={form["city"].value}"></head><body></body></html>', "utf-8"))
+            self.respond(bytes(f'<!DOCTYPE html><html><head><meta http-equiv="refresh" content="2;url=.?state={form["state"].value}&city={form["city"].value}&memo=The%20weather%20in%20{form["city"].value},%20{form["state"].value}%20is%20currently%20{memo}."></head><body></body></html>', "utf-8"))
 
         print("incomming http: ", self.path)
         content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data

@@ -65,4 +65,4 @@ def getCityWeatherImage(city: str, state: str):
     pop = int(getPopulationInfo(city, state))
 
     img = add_weather_overlay(pop, weather, city, state)
-    return img
+    return img, weather

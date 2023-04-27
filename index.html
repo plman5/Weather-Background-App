@@ -9,7 +9,8 @@
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     body{
 
-      background-image: url("https://res.cloudinary.com/practicaldev/image/fetch/s--P-zvMTgt--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/qyix6eyhrnc8x9c44yp2.jpg");
+      /*background-image: url("https://res.cloudinary.com/practicaldev/image/fetch/s--P-zvMTgt--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/qyix6eyhrnc8x9c44yp2.jpg");*/
+      background-image: url("https://images.pexels.com/photos/531767/pexels-photo-531767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 background-repeat: no-repeat;
       background-size: cover;
     width: 100%;
@@ -29,6 +30,10 @@ background-repeat: no-repeat;
     }
     .form{
       text-align: center;
+    }
+    span {
+      display: table;
+      margin: 0 auto;
     }
   </style>
   <script>
@@ -124,7 +129,7 @@ background-repeat: no-repeat;
       // get parameters fromurl
         var cityParam=GetURLParameter("city");
         var state=GetURLParameter("state");
-        var image=GetURLParameter("image");
+        var memo=GetURLParameter("memo");
         // set form values
         if (state != null){
           document.getElementById("state").value=state.replaceAll("%20", " ");
@@ -151,6 +156,9 @@ background-repeat: no-repeat;
         cityParam=cityParam.replaceAll("%20", " ")
         if (cityParam != null){
           document.getElementById("city").value=cityParam;
+        }
+        if (memo != null){
+            document.getElementById("memo").textContent=memo.replaceAll("%20", " ")+'\n';
         }
     }
   </script>
@@ -223,6 +231,7 @@ background-repeat: no-repeat;
     </div>
     <p><input type="submit" class="weather-button" value="Show Weather"></input></p>
   </form>
+  <span id="memo"></span>
 </header>
 <br/>
 <!--<img class="padding" src="" style="min-height:400px;display: block;margin-left: auto;margin-right: auto;width: 50%;"/>-->
