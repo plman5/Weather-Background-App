@@ -1,3 +1,5 @@
+https://teams.microsoft.com/l/channel/19%3A141ef315e34a43c99257d3621d9064a4%40thread.tacv2/tab%3A%3Ad7ceaac9-affc-4407-bc7b-21318e777e2f?groupId=9f5de5db-7b95-4d53-8041-654bfebeb5a8&tenantId=0c9bf8f6-ccad-4b87-818d-49026938aa97&allowXTenantAccess=false
+
 System will use the Census Bureau API to gather population info of an area
 System will use weather.gov to retrieve user information
 System will use PositionStack to convert a city name into a coordinate pair
