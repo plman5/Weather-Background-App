@@ -1,2 +1,4 @@
 h
 As a user I am able to input a location to see the weather there
+As a user I want to be able to see the correct weather at a certain location so I know what to wear when I go there.
+As a user I want to be able to see the weather for any city so I can see the weather of the city of my choice.
