@@ -1,4 +1,13 @@
-h
-As a user I am able to input a location to see the weather there
-As a user I want to be able to see the correct weather at a certain location so I know what to wear when I go there.
-As a user I want to be able to see the weather for any city so I can see the weather of the city of my choice.
+System will use the Census Bureau API to gather population info of an area
+System will use weather.gov to retrieve user information
+System will use PositionStack to convert a city name into a coordinate pair
+The front end will be written in HTML, CSS, and JS
+The system will store user feedback to a database
+System will be limited to the United States
+System will overlay the weather image on top of the city image
+System will identify user input and return the proper image and weather condition
+The backend software will be written in Python 3
+as a user, i am able to input a city name in order to get a picture of the city in the current condition
+as a user, I will be able to enter feedback as to whether or not the image met my expectations or not in order to improve the images produced
+as a user i will receive feedback if i input an invalid location so I can reenter a correct city
+As a user, I should be able to select the state that the city I'm looking for is in
