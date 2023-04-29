@@ -45,7 +45,7 @@ def add_weather_overlay(population, weatherCondition, city, state):
         overlay_image = Image.open("img/storm_overlay.png").convert("RGBA")
     else:
         # Default to no overlay if the weather condition is not recognized
-        return base_image
+        overlay_image= base_image
 
     # Resize the overlay image to match the size of the base image
     #size=overlay_image.size
