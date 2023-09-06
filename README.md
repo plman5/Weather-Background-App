@@ -1,3 +1,6 @@
+This is a project I worked on with a group for my Software Development Foundations class
+
+
 # weather-background
 A simple python script to change your desktop background to the current weather conditions.
 
